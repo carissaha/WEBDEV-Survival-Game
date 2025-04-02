@@ -1,6 +1,6 @@
 body {
-    font-family: sans-serif;
-    background: url("images/homepagebg.png");
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: url("images/homepagebg.png") no-repeat center center fixed;
     margin: 0;
     padding: 0;
     animation: fadeIn 2s ease-in forwards;
@@ -16,7 +16,7 @@ body {
 h1 {
     color: antiquewhite;
     font-size: 4em;
-    margin-bottom: 250px;
+    margin-bottom: 100px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.159);
     border-radius: 30px;
     padding: 20px;

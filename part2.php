@@ -40,11 +40,13 @@ if(isset($_POST['action'])) {
         
         <?php if($_SESSION['part2_stage'] == 'day1_start'): ?>
             <h2>Your Copilot is Injured</h2>
-            <p>After a sudden crash landing, your copilot has been injured. It's up to you to help them.</p>
+            <p>After a sudden crash landing, your copilot has been injured. <p>"Ugh… that was rough," your copilot groans, clutching their side. 
+                "I think I hit my leg on something." You kneel beside them, scanning the injuries. There’s a deep gash on their arm, and they’re wincing in pain.</p>
+                <p>"Don't worry, I'll get you patched up," you say, trying to keep your voice steady.</p></p>
             
             <img src="images/crash.png" class="scene-img">
             
-            <p>You notice a compartment in the back of the wreckage. Maybe it holds something useful. What will you do next?</p>
+            <p>You notice a compartment in the back of the wreckage. Maybe it holds something useful. <p>"Hang tight. I’ll see if there’s anything back there."</p>What will you do next?</p>
             
             <form method="post">
                 <input type="hidden" name="action" value="look_in_compartment">
@@ -54,7 +56,9 @@ if(isset($_POST['action'])) {
             
         <?php elseif ($_SESSION['part2_stage'] == 'compartment_search'): ?>
             <h2>Searching the Compartment</h2>
-            <p>After looking through the compartment, you find a med kit. It's exactly what you need!</p>
+            <p>After looking through the compartment, you find a med kit. It's exactly what you need!
+                <br>"Got it!" you call out, rushing back to your copilot.
+            </p>
             
             <img src="images/medkit.png" class="scene-img">
 
@@ -78,7 +82,7 @@ if(isset($_POST['action'])) {
             
         <?php elseif ($_SESSION['part2_stage'] == 'copilot_healed'): ?>
             <h2>Your Copilot is Healed</h2>
-            <p>After using the med kit, your copilot is now healed and able to assist you. You must now plan your next move to survive in the wilderness.</p>
+            <p>You secure the bandage and pat their shoulder. "All patched up. Now, let’s figure out what we do next."</p>
             
             <img src="images/pt2finalimg.png" class="scene-img">
 

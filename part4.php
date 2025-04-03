@@ -376,7 +376,7 @@ if(isset($_POST['action'])) {
             <div class="game-over">
                 <h2>Game Over</h2>
                 <p>Your injuries were too severe to continue. Weakened and unable to go on, you collapse in the wilderness. Your vision fades as darkness closes in...</p>
-                <img src="images/game_over.jpg" class="scene-img">
+                <img src="images/gameover.gif" class="scene-img">
                 <p>Your survival adventure has come to an end.</p>
                 <form method="post">
                     <button type="submit" name="reset" value="true" class="restart-btn">Try Again</button>

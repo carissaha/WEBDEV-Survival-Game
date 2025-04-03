@@ -16,11 +16,13 @@ function displayInventory() {
         echo "<div class='inventory-container'>";
         
         // Loop through each item in the inventory
-        foreach ($_SESSION['inventory'] as $item) {
-            echo "<span class='inventory-item'>$item</span>";
-        }
+        if (is_array($_SESSION['inventory'])) {
+            foreach ($_SESSION['inventory'] as $item) {
+                echo "<span class='inventory-item'>" . $item . "</span>";
+            }
         
         echo "</div>";
+        }
     }
 }
 

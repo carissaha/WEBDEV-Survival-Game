@@ -1,18 +1,29 @@
 <?php
 include('health.php');
+include('inventorypt23.php');
 
+if(!isset($_SESSION['part4_visited'])) {
+    resetInventory();
+    $_SESSION['part4_visited'] = true;
+}
 if(isset($_POST['reset'])) {
     $_SESSION['part4_stage'] = 'day2_start';
     resetHealth();
+    resetInventory();
 }
-
-if(!isset($_SESSION['part4_stage'])) {
+elseif(isset($_POST['from_part3']) && $_POST['from_part3'] == 'true') {
     $_SESSION['part4_stage'] = 'day2_start';
+    if(isset($_POST['current_health'])) {
+        $_SESSION['health'] = $_POST['current_health'];
+    }
+    resetInventory();
 }
 
 if(isset($_POST['action'])) {
     $action = $_POST['action'];
-    
+    if($_SESSION['part4_stage'] == 'day2_start' && $action == 'start_water_search') {
+        $_SESSION['part4_stage'] = 'water_choice';
+    }
     if($_SESSION['part4_stage'] == 'water_choice') {
         if($action == 'drink_stream') {
             decreaseHealth(20);
@@ -93,6 +104,17 @@ if(isset($_POST['action'])) {
         $_SESSION['part4_stage'] = 'food_choice';
     }
     
+    elseif($_SESSION['part4_stage'] == 'cabin' && $action == 'examine_handbook') {
+        $_SESSION['part4_stage'] = 'handbook';
+    }
+    
+    elseif($_SESSION['part4_stage'] == 'handbook' && $action == 'take_handbook') {
+        if(!in_array('Survival Handbook', $_SESSION['inventory'])) {
+            addItemToInventory('Survival Handbook');
+        }
+        $_SESSION['part4_stage'] = 'cabin';
+    }
+    
     elseif($_SESSION['part4_stage'] == 'food_choice') {
         if($action == 'purple_berries') {
             increaseHealth(15);
@@ -126,213 +148,15 @@ if(isset($_POST['action'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Survival Adventure - Day 2</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #1a1a1a;
-            color: #e6e6e6;
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
-        }
-        .container {
-            max-width: 800px;
-            margin: 20px auto;
-            background-color: #2a2a2a;
-            padding: 25px;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.7);
-            position: relative;
-            overflow: hidden;
-        }
-        h1 {
-            color: #ff9933;
-            text-align: center;
-            margin-bottom: 20px;
-            font-size: 2.2em;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-        }
-        h2 {
-            color: #66ccff;
-            margin-top: 20px;
-            font-size: 1.8em;
-            border-bottom: 2px solid #444;
-            padding-bottom: 10px;
-        }
-        p {
-            font-size: 1.1em;
-            margin-bottom: 20px;
-        }
-        
-        .choice-btn {
-            display: block;
-            width: 100%;
-            background-color: #334455;
-            color: white;
-            padding: 15px 20px;
-            margin: 15px 0;
-            border-radius: 8px;
-            text-decoration: none;
-            border: none;
-            cursor: pointer;
-            font-size: 1.1em;
-            text-align: left;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-            position: relative;
-            overflow: hidden;
-        }
-        .choice-btn:hover {
-            background-color: #4a6380;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 8px rgba(0,0,0,0.3);
-        }
-        .choice-btn:after {
-            content: "→";
-            position: absolute;
-            right: 20px;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 1.4em;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        .choice-btn:hover:after {
-            opacity: 1;
-        }
-        
-        .scene-img {
-            width: 100%;
-            max-height: 350px;
-            object-fit: cover;
-            border-radius: 10px;
-            margin: 15px 0;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
-            transition: transform 0.3s ease;
-        }
-        .scene-img:hover {
-            transform: scale(1.02);
-        }
-        
-        .consequence-box {
-            background-color: #2c3e50;
-            border-radius: 10px;
-            padding: 20px;
-            margin: 20px 0;
-            border-left: 5px solid;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            animation: fadeIn 0.5s ease;
-        }
-        .consequence-box h3 {
-            margin-top: 0;
-            color: #f0f0f0;
-        }
-        .positive {
-            border-color: #2ecc71;
-        }
-        .negative {
-            border-color: #e74c3c;
-        }
-        .neutral {
-            border-color: #3498db;
-        }
-        
-        .reset-btn {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background-color: #c33;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 30px;
-            cursor: pointer;
-            border: none;
-            font-weight: bold;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-            transition: all 0.3s ease;
-            z-index: 100;
-        }
-        .reset-btn:hover {
-            background-color: #e33;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.4);
-        }
-        
-        .day-indicator {
-            position: absolute;
-            top: 20px;
-            right: 25px;
-            display: flex;
-            align-items: center;
-            font-weight: bold;
-            color: #FFD700;
-        }
-        .day-indicator:before {
-            content: "";
-            display: inline-block;
-            width: 24px;
-            height: 24px;
-            background-color: #FFD700;
-            border-radius: 50%;
-            box-shadow: 0 0 10px rgba(255, 215, 0, 0.6);
-            margin-right: 8px;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-        @keyframes shake {
-            0%, 100% { transform: translateX(0); }
-            10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
-            20%, 40%, 60%, 80% { transform: translateX(5px); }
-        }
-        @keyframes fadeInLeft {
-            from { opacity: 0; transform: translateX(-50px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-        
-        .game-over {
-            text-align: center;
-            padding: 40px 20px;
-            animation: fadeIn 1s ease;
-        }
-        .game-over h2 {
-            color: #ff4d4d;
-            font-size: 2.5em;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-            border: none;
-            animation: pulse 2s infinite;
-        }
-        .restart-btn {
-            display: inline-block;
-            padding: 15px 30px;
-            margin-top: 30px;
-            background-color: #ff6b6b;
-            color: white;
-            font-size: 1.2em;
-            border-radius: 30px;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            animation: fadeInLeft 1s ease 0.5s both;
-        }
-        .restart-btn:hover {
-            background-color: #ff4d4d;
-            transform: scale(1.05);
-        }
-    </style>
+    <link rel="stylesheet" href="part2and3.css">
 </head>
 <body>
     <div class="container">
         <?php displayHealthBar(); ?>
-        
+        <?php displayInventory(); ?>
         <div class="day-indicator">Day 2</div>
-        
+
+                
         <h1>Survival Challenge: Day 2</h1>
         
         <?php if($_SESSION['part4_stage'] == 'day2_start'): ?>
@@ -345,9 +169,7 @@ if(isset($_POST['action'])) {
             <form method="post">
                 <input type="hidden" name="action" value="start_water_search">
                 <button type="submit" class="choice-btn">Begin the search for water</button>
-            </form>
-            <?php $_SESSION['part4_stage'] = 'water_choice'; ?>
-            
+            </form>            
         <?php elseif($_SESSION['part4_stage'] == 'water_choice'): ?>
             <h2>Finding Water</h2>
             <p>After an hour plus of hiking in dense jungle - dodging vines plus climbing above large, twisted roots - you hear the sure sound of flowing water. It draws you and you push past a screen of ferns to see a clear brook move through the thick undergrowth.</p>
@@ -489,6 +311,18 @@ if(isset($_POST['action'])) {
             <p>Your stomach growls loudly, reminding you that you haven't eaten all day. You should look for food before nightfall.</p>
             <form method="post">
                 <button type="submit" name="action" value="explore" class="choice-btn">Explore around the cabin for food</button>
+                <button type="submit" name="action" value="examine_handbook" class="choice-btn">Examine the survival handbook</button>
+            </form>
+            
+        <?php elseif($_SESSION['part4_stage'] == 'handbook'): ?>
+            <h2>Survival Handbook</h2>
+            <p>You open the survival handbook and examine its contents.</p>
+            
+            <img src="images/handbook.png" class="scene-img">
+            
+            <p>The handbook contains valuable information about local edible berries, a map to the ranger station, and proper rescue signals. This will be extremely useful for your survival.</p>
+            <form method="post">
+                <button type="submit" name="action" value="take_handbook" class="choice-btn">Take the handbook and return to the cabin</button>
             </form>
             
         <?php elseif($_SESSION['part4_stage'] == 'food_choice'): ?>

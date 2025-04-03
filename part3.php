@@ -24,7 +24,6 @@ if(isset($_POST['action'])) {
             $_SESSION['choice_made'] = 'explore_nearby';
         }
     }
-
     // If the player is in the 'shelter_consequence' stage
     elseif ($_SESSION['part3_stage'] == 'shelter_consequence' && $action == 'continue') {
         $_SESSION['part3_stage'] = 'part4_start';
@@ -79,6 +78,9 @@ if(isset($_POST['action'])) {
             <?php endif; ?>
 
             <form method="post" action="part4.php">
+                <input type="hidden" name="from_part3" value="true">
+                <input type="hidden" name="current_health" value="<?php echo $_SESSION['health']; ?>">
+
                 <button type="submit" name="action" value="continue" class="choice-btn">Sleep</button>
             </form>
         <?php endif; ?>

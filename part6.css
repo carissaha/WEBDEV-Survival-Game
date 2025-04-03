@@ -1,0 +1,93 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #1a1a1a;
+    color: #e6e6e6;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    background-color: #2a2a2a;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.7);
+    position: relative;
+    overflow: hidden;
+}
+h1 {
+    color: #ff9933;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2.2em;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+h2 {
+    color: #66ccff;
+    margin-top: 20px;
+    font-size: 1.8em;
+    border-bottom: 2px solid #444;
+    padding-bottom: 10px;
+}
+p {
+    font-size: 1.1em;
+    margin-bottom: 20px;
+}
+
+.button {
+    display: block;
+    width: 100%;
+    background-color: #334455;
+    color: white;
+    padding: 15px 20px;
+    margin: 15px 0;
+    border-radius: 8px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.1em;
+    text-align: left;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+button:hover {
+    background-color: #4a6380;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(0,0,0,0.3);  
+}
+
+#scene {
+    width: 100%;
+    max-height: 350px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin: 15px 0;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    transition: transform 0.3s ease;
+}
+#scene :hover {
+    transform: scale(1.02);
+}
+
+#handbook {
+    display: block;
+    width: 100%;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+    background-image: url(images/grass.jpg);
+
+}
+
+#skelton {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+} 

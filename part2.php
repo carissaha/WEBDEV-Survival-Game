@@ -5,7 +5,9 @@ if(isset($_POST['reset'])) {
     $_SESSION['part2_stage'] = 'day1_start'; 
     resetInventory();
 }
-
+if(!isset($_SESSION['part2_stage']) || $_SESSION['part2_stage'] == 'day1_start') {
+    resetInventory();
+}
 if(!isset($_SESSION['part2_stage'])) {
     $_SESSION['part2_stage'] = 'day1_start';
 }

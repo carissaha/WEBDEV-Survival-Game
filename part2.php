@@ -39,6 +39,10 @@ if(isset($_POST['action'])) {
         <h1>You Crashed</h1>
         
         <?php if($_SESSION['part2_stage'] == 'day1_start'): ?>
+            <audio autoplay>
+                <source src="audio/birds.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
             <h2>Your Copilot is Injured</h2>
             <p>After a sudden crash landing, your copilot has been injured. <p>"Ugh… that was rough," your copilot groans, clutching their side. 
                 "I think I hit my leg on something." You kneel beside them, scanning the injuries. There’s a deep gash on their arm, and they’re wincing in pain.</p>

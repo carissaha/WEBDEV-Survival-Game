@@ -1,7 +1,5 @@
 <?php
-if (session_status() == PHP_SESSION_NONE) {
-    session_start();
-}
+
 // Initialize inventory
 if (!isset($_SESSION['inventory'])) {
     $_SESSION['inventory'] = []; // Set up an empty inventory array on first visit

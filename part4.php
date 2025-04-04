@@ -1,4 +1,7 @@
 <?php
+if (session_status() !== PHP_SESSION_ACTIVE) {
+    session_start();
+}
 include('health.php');
 include('inventorypt23.php');
 
@@ -24,7 +27,7 @@ if(isset($_POST['action'])) {
             decreaseHealth(20);
             $_SESSION['part4_stage'] = 'water_consequence';
             $_SESSION['choice_made'] = 'drink_stream';
-        }elseif($action == 'boil_water') {
+        } elseif($action == 'boil_water') {
             increaseHealth(10);
             $_SESSION['part4_stage'] = 'water_consequence';
             $_SESSION['choice_made'] = 'boil_water';
@@ -41,7 +44,7 @@ if(isset($_POST['action'])) {
             if($chance == 1) {
                 $_SESSION['part4_stage'] = 'bridge_consequence';
                 $_SESSION['choice_made'] = 'cross_success';
-            }else {
+            } else {
                 decreaseHealth(30);
                 $_SESSION['part4_stage'] = 'bridge_consequence';
                 $_SESSION['choice_made'] = 'cross_failure';
@@ -49,13 +52,13 @@ if(isset($_POST['action'])) {
         } elseif($action == 'find_another_way') {
             $_SESSION['part4_stage'] = 'bridge_consequence';
             $_SESSION['choice_made'] = 'find_another_way';
-        }elseif($action == 'jump_across') {
+        } elseif($action == 'jump_across') {
             decreaseHealth(50);
             $_SESSION['part4_stage'] = 'bridge_consequence';
             $_SESSION['choice_made'] = 'jump_across';
         }
         
-        if(isGameOver()) {
+        if($_SESSION['health'] <= 0) {
             $_SESSION['part4_stage'] = 'game_over';
         }
     }
@@ -77,7 +80,7 @@ if(isset($_POST['action'])) {
             decreaseHealth(15);
             $_SESSION['part4_stage'] = 'lost_path';
             
-            if(isGameOver()) {
+            if($_SESSION['health'] <= 0) {
                 $_SESSION['part4_stage'] = 'game_over';
             }
         }
@@ -115,12 +118,12 @@ if(isset($_POST['action'])) {
             increaseHealth(15);
             $_SESSION['part4_stage'] = 'berries_consequence';
             $_SESSION['choice_made'] = 'purple_berries';
-        }elseif($action == 'yellow_berries') {
+        } elseif($action == 'yellow_berries') {
             decreaseHealth(25);
             $_SESSION['part4_stage'] = 'berries_consequence';
             $_SESSION['choice_made'] = 'yellow_berries';
             
-            if(isGameOver()) {
+            if($_SESSION['health'] <= 0) {
                 $_SESSION['part4_stage'] = 'game_over';
             }
         }
@@ -151,7 +154,6 @@ if(isset($_POST['action'])) {
         <?php displayInventory(); ?>
         <div class="day-indicator">Day 2</div>
 
-                
         <h1>Survival Challenge: Day 2</h1>
         
         <?php if($_SESSION['part4_stage'] == 'day2_start'): ?>
@@ -367,14 +369,14 @@ if(isset($_POST['action'])) {
                 <button type="submit" name="action" value="sleep" class="choice-btn">Sleep until morning</button>
             </form>
             
-            <?php elseif($_SESSION['part4_stage'] == 'game_over'): ?>
+        <?php elseif($_SESSION['part4_stage'] == 'game_over'): ?>
             <div class="game-over">
                 <h2>Game Over</h2>
                 <p>Your injuries were too severe to continue. Weakened and unable to go on, you collapse in the wilderness. Your vision fades as darkness closes in...</p>
                 <img src="images/gameover.gif" class="scene-img">
                 <p>Your survival adventure has come to an end.</p>
-                <form method="post">
-                    <button type="submit" name="reset" value="true" class="restart-btn">Try Again</button>
+                <form method="post" action="reset.php">
+                    <button type="submit" class="restart-btn">Try Again</button>
                 </form>
             </div>
         <?php endif; ?>

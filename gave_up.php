@@ -14,7 +14,7 @@
             <p>The helicopter flies past without noticing you.</p>
             <p>Years pass... your body turns to bones in the wilderness.</p>
             <div class="choices">
-                <a href="homepage.html" class="button">Game Over</a>
+                <a href="reset.php" class="button">Game Over</a>
             </div>
         </div>
     </div>

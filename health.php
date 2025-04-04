@@ -1,4 +1,5 @@
 <?php
+
 if (!isset($_SESSION['health'])) {
     $_SESSION['health'] = 100;
 }
@@ -21,7 +22,7 @@ function getHealth() {
 }
 
 function isGameOver() {
-    return isset($_SESSION['game_over']) && $_SESSION['game_over'] === true;
+    return $_SESSION['health'] <= 0;
 }
 
 function resetHealth() {

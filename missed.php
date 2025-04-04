@@ -10,7 +10,7 @@
     <div class="container ending">
         <?php if (isset($_GET['signal']) && $_GET['signal'] == 'one'): ?>
             <!-- wrong signal scene -->
-            <img id="handbook" src="images/Handbook.jpg" alt="helicopter leaves">
+            <img id="handbook" src="images/handbook.jpg" alt="handbook">
             <h2>They Didn't Understand</h2>
             <div id="text-box">
                 <p>The helicopter circles but flies away - raising one arm made them think you were okay.</p>

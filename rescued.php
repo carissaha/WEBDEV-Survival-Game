@@ -143,7 +143,7 @@ if(isset($_SESSION['game_start_time'])) {
             <?php endif; ?>
             
             <div class="choices">
-            <a href="reset.php" class="choice-btn">Play Again</a>              
+            <a href="reset.php" class="button">Play Again</a>              
             <?php if(isset($_SESSION['logged_in'])): ?>
                 <a href="login.php?logout=1" class="button">Logout</a>
                 <?php endif; ?>

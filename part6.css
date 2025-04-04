@@ -91,3 +91,23 @@ button:hover {
     position: relative;
     overflow: hidden;
 } 
+
+.day-indicator {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    color: #FFD700;
+}
+.day-indicator:before {
+    content: "";
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    background-color: #FFD700;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.6);
+    margin-right: 8px;
+}

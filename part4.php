@@ -4,6 +4,9 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
 }
 include('health.php');
 include('inventorypt23.php');
+if (!isset($_SESSION['part4_stage'])) {
+    $_SESSION['part4_stage'] = 'day2_start';
+}
 
 if(!isset($_SESSION['part4_visited'])) {
     resetInventory();

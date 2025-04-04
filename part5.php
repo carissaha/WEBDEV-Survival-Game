@@ -2,21 +2,13 @@
 include('health.php');
 include('inventorypt23.php');
 
-if(!isset($_SESSION['part5_stage'])) {
-    $_SESSION['part5_stage'] = 'day3_start';
-}
 if (isset($_POST['reset']) && $_POST['reset'] === 'true') {
-    unset($_SESSION['part2_stage']);
-    unset($_SESSION['part4_stage']);
-    unset($_SESSION['part5_stage']);
-    unset($_SESSION['inventory']);
-    unset($_SESSION['rescued']);
-    unset($_SESSION['game_start_time']);
-    unset($_SESSION['part4_visited']);
-    unset($_SESSION['choice_made']);
-
+    session_unset(); 
     header("Location: homepage.html");
     exit;
+}
+if (!isset($_SESSION['part4_stage'])) {
+    $_SESSION['part4_stage'] = 'day2_start';
 }
 
 if(isset($_POST['action'])) {

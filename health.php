@@ -1,6 +1,4 @@
 <?php
-session_start();
-
 if (!isset($_SESSION['health'])) {
     $_SESSION['health'] = 100;
 }

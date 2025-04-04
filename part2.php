@@ -1,4 +1,5 @@
 <?php
+session_start();
 include('inventorypt23.php');
 include('health.php');
 if(!isset($_SESSION['game_start_time'])) {

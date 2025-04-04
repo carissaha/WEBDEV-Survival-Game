@@ -44,12 +44,20 @@ if(isset($_POST['action'])) {
     <link rel="stylesheet" href="part2and3.css">
 </head>
 <body>
+        
+    <audio autoplay loop>
+        <source src="audio/wind.mp3" type="audio/mp3">
+                
+    </audio>
+
     <div class="container">
         <?php displayHealthBar(); ?>
         <div class="day-indicator">Day 1</div>
         <h1>Find Shelter</h1>
 
         <?php if ($_SESSION['part3_stage'] == 'find_shelter'): ?>
+
+
             <h2>Night is Approaching...</h2>
             <p>It's getting cold. You must find shelter.</p>
             <img src="images/nightapproaching.gif" class="scene-img">
@@ -59,6 +67,7 @@ if(isset($_POST['action'])) {
             </form>
 
         <?php elseif ($_SESSION['part3_stage'] == 'shelter_consequence'): ?>
+
             <h2>You're Safe for Now</h2>
             <?php if ($_SESSION['choice_made'] == 'stay_near_wreckage'): ?>
                 <div class="consequence-box negative">

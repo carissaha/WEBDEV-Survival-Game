@@ -40,9 +40,10 @@ if(isset($_POST['action'])) {
         
         <?php if($_SESSION['part2_stage'] == 'day1_start'): ?>
             <audio autoplay>
-                <source src="audio/birds.mp3" type="audio/mpeg">
-                Your browser does not support the audio element.
+                <source src="audio/stranded-intro.mp3" type="audio/mp3">
+                
             </audio>
+
             <h2>Your Copilot is Injured</h2>
             <p>After a sudden crash landing, your copilot has been injured. <p>"Ugh… that was rough," your copilot groans, clutching their side. 
                 "I think I hit my leg on something." You kneel beside them, scanning the injuries. There’s a deep gash on their arm, and they’re wincing in pain.</p>
@@ -59,6 +60,11 @@ if(isset($_POST['action'])) {
 
             
         <?php elseif ($_SESSION['part2_stage'] == 'compartment_search'): ?>
+            <audio autoplay>
+                <source src="audio/background.mp3" type="audio/mp3">
+                
+            </audio>
+
             <h2>Searching the Compartment</h2>
             <p>After looking through the compartment, you find a med kit. It's exactly what you need!
                 <br>"Got it!" you call out, rushing back to your copilot.
@@ -73,6 +79,11 @@ if(isset($_POST['action'])) {
 
             
         <?php elseif ($_SESSION['part2_stage'] == 'med_kit_taken'): ?>
+            <audio autoplay>
+                <source src="audio/background.mp3" type="audio/mp3">
+                
+            </audio>
+
             <h2>Using the Med Kit</h2>
             <p>You equip the med kit to your inventory. Now, you must use it to heal your copilot.</p>
             
@@ -85,6 +96,11 @@ if(isset($_POST['action'])) {
             
             
         <?php elseif ($_SESSION['part2_stage'] == 'copilot_healed'): ?>
+            <audio autoplay>
+                <source src="audio/background.mp3" type="audio/mp3">
+                
+            </audio>
+            
             <h2>Your Copilot is Healed</h2>
             <p>You secure the bandage and pat their shoulder. "All patched up. Now, let’s figure out what we do next."</p>
             

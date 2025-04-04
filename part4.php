@@ -160,6 +160,11 @@ if(isset($_POST['action'])) {
         <h1>Survival Challenge: Day 2</h1>
         
         <?php if($_SESSION['part4_stage'] == 'day2_start'): ?>
+            <audio autoplay loop>
+                <source src="audio/birds.mp3" type="audio/mp3">
+                        
+            </audio>
+
             <h2>A New Day Begin</h2>
             <p>After a sleepless night you find yourself awakening inside the cave. Sunlight streams through the cave entrance during the morning to create elongated shadows against the stone walls. You feel a dryness in your throat while your stomach produces growling sounds because of hunger. </p>
             
@@ -171,6 +176,11 @@ if(isset($_POST['action'])) {
                 <button type="submit" class="choice-btn">Begin the search for water</button>
             </form>            
         <?php elseif($_SESSION['part4_stage'] == 'water_choice'): ?>
+            <audio autoplay loop>
+                <source src="audio/water.mp3" type="audio/mp3">
+                        
+            </audio>
+
             <h2>Finding Water</h2>
             <p>After an hour plus of hiking in dense jungle - dodging vines plus climbing above large, twisted roots - you hear the sure sound of flowing water. It draws you and you push past a screen of ferns to see a clear brook move through the thick undergrowth.</p>
             
@@ -183,6 +193,10 @@ if(isset($_POST['action'])) {
             </form>
             
         <?php elseif($_SESSION['part4_stage'] == 'water_consequence'): ?>
+            <audio autoplay loop>
+                <source src="audio/background.mp3" type="audio/mp3">
+                        
+            </audio>
             <h2>Water Decision</h2>
             
             <?php if($_SESSION['choice_made'] == 'drink_stream'): ?>
@@ -206,6 +220,10 @@ if(isset($_POST['action'])) {
             </form>
             
         <?php elseif($_SESSION['part4_stage'] == 'bridge'): ?>
+            <audio autoplay loop>
+                <source src="audio/wind.mp3" type="audio/mp3">
+                        
+            </audio>
             <h2>The Rickety Bridge</h2>
             <p>After you quench your thirst, you proceed along the stream. After a mile or so, the land shifts a lot - the stream becomes a rapid river and it goes through a narrow ravine.</p>
             <p>A rope bridge crosses the ravine. It appears neglected for years - several boards vanished and the ropes show wear.</p>

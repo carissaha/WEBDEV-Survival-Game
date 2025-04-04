@@ -6,11 +6,6 @@ if(!isset($_SESSION['part4_visited'])) {
     resetInventory();
     $_SESSION['part4_visited'] = true;
 }
-if(isset($_POST['reset'])) {
-    $_SESSION['part4_stage'] = 'day2_start';
-    resetHealth();
-    resetInventory();
-}
 elseif(isset($_POST['from_part3']) && $_POST['from_part3'] == 'true') {
     $_SESSION['part4_stage'] = 'day2_start';
     if(isset($_POST['current_health'])) {
@@ -385,8 +380,5 @@ if(isset($_POST['action'])) {
         <?php endif; ?>
     </div>
     
-    <form method="post">
-        <button type="submit" name="reset" value="true" class="reset-btn">Reset Game</button>
-    </form>
 </body>
 </html>

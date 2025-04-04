@@ -2,12 +2,6 @@
 include('health.php');
 include('inventorypt23.php');
 
-if(isset($_POST['reset'])) {
-    $_SESSION['part5_stage'] = 'day3_start';
-    resetHealth();
-    resetInventory();
-}
-
 if(!isset($_SESSION['part5_stage'])) {
     $_SESSION['part5_stage'] = 'day3_start';
 }
@@ -313,8 +307,5 @@ if(isset($_POST['action'])) {
         
     </div>
     
-    <form method="post">
-        <button type="submit" name="reset" value="true" class="reset-btn">Reset Game</button>
-    </form>
 </body>
 </html>

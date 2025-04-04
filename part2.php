@@ -1,16 +1,14 @@
 <?php
 include('inventorypt23.php');
-
-if(isset($_POST['reset'])) {
-    $_SESSION['part2_stage'] = 'day1_start'; 
-    resetInventory();
-}
-if(!isset($_SESSION['part2_stage']) || $_SESSION['part2_stage'] == 'day1_start') {
-    resetInventory();
+include('health.php');
+if(!isset($_SESSION['game_start_time'])) {
+    $_SESSION['game_start_time'] = time();
 }
 if(!isset($_SESSION['part2_stage'])) {
     $_SESSION['part2_stage'] = 'day1_start';
+    resetInventory(); 
 }
+
 
 if(isset($_POST['action'])) {
     $action = $_POST['action'];
@@ -20,6 +18,7 @@ if(isset($_POST['action'])) {
         $_SESSION['part2_stage'] = 'med_kit_taken';
     } elseif ($action == 'use_med_kit') {
         $_SESSION['part2_stage'] = 'copilot_healed';
+        $_SESSION['helped_copilot'] = true;
     } elseif ($action == 'continue_story') {
         $_SESSION['part2_stage'] = 'end_of_part2';
     }

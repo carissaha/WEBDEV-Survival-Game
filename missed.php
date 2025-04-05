@@ -7,8 +7,12 @@
     <link rel="stylesheet" href="part6.css">
 </head>
 <body>
+
     <div class="container ending">
         <?php if (isset($_GET['signal']) && $_GET['signal'] == 'one'): ?>
+            <audio autoplay loop>
+                <source src="audio/stranded-intro.mp3" type="audio/mp3">
+            </audio>
             <!-- wrong signal scene -->
             <img id="handbook" src="images/handbook.jpg" alt="handbook">
             <h2>They Didn't Understand</h2>
@@ -21,6 +25,9 @@
             </div>
 
         <?php elseif (isset($_GET['action']) && $_GET['action'] == 'skeleton'): ?>
+            <audio autoplay loop>
+                <source src="audio/stranded-intro.mp3" type="audio/mp3">
+            </audio>
             <!-- skeleton scene -->
             <img id="skelton" src="images/skeleton.gif" alt="skeleton remains">
             <div id="text-box">

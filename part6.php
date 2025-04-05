@@ -16,6 +16,9 @@ require_once 'engine.php';
         <h1>Survival Challenge: Day 7</h1>
 
         <?php if (!isset($_GET['action'])): ?>
+            <audio autoplay loop>
+                <source src="audio/birds.mp3" type="audio/mp3">
+            </audio>
             <img id="scene" src="images/sky.gif" alt="sky">
             <div id="text-box">
                 <p>You lie on the ground, staring at the vast sky above after several days of no signs.</p>
@@ -25,6 +28,9 @@ require_once 'engine.php';
             </div>
 
         <?php elseif ($_GET['action'] == 'turn' && !isset($_GET['signal'])): ?>
+            <audio autoplay loop>
+                <source src="audio/trees.mp3" type="audio/mp3">
+            </audio>
             <img id="scene" src="images/helicopter-sky.jpg" alt="helicopter">
             <div id="text-box">
                 <p>You see something in the sky. Is it a bird? Superman? It's a HELICOPTER!</p>
@@ -35,6 +41,9 @@ require_once 'engine.php';
             </div>
         
         <?php elseif ($_GET['action'] == 'get_up' && !isset($_GET['signal'])): ?>
+            <audio autoplay loop>
+                <source src="audio/trees.mp3" type="audio/mp3">
+            </audio>
            
             <img id="scene" src="images/running.gif" alt="helicopter">
             <div id="text-box">

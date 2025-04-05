@@ -91,6 +91,9 @@ if(isset($_SESSION['game_start_time'])) {
     </style>
 </head>
 <body>
+    <audio autoplay loop>
+        <source src="audio/background.mp3" type="audio/mp3">
+    </audio>
     <div class="container ending">
         <img id="scene" src="images/rescued.gif" alt="rescue">
         <h2>You're Saved!</h2>

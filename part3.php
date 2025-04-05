@@ -44,11 +44,6 @@ if(isset($_POST['action'])) {
     <link rel="stylesheet" href="part2and3.css">
 </head>
 <body>
-        
-    <audio autoplay loop>
-        <source src="audio/wind.mp3" type="audio/mp3">
-                
-    </audio>
 
     <div class="container">
         <?php displayHealthBar(); ?>
@@ -56,7 +51,10 @@ if(isset($_POST['action'])) {
         <h1>Find Shelter</h1>
 
         <?php if ($_SESSION['part3_stage'] == 'find_shelter'): ?>
-
+            <audio autoplay loop>
+                <source src="audio/wind.mp3" type="audio/mp3">
+                        
+            </audio>
 
             <h2>Night is Approaching...</h2>
             <p>It's getting cold. You must find shelter.</p>
@@ -68,8 +66,12 @@ if(isset($_POST['action'])) {
 
         <?php elseif ($_SESSION['part3_stage'] == 'shelter_consequence'): ?>
 
+
             <h2>You're Safe for Now</h2>
             <?php if ($_SESSION['choice_made'] == 'stay_near_wreckage'): ?>
+                <audio autoplay loop>
+                    <source src="audio/stranded-intro.mp3" type="audio/mp3">
+                </audio>
                 <div class="consequence-box negative">
                     <h3>You stayed near the wreckage</h3>
                     <p>The cold was unbearable, and you didn't sleep well. Your health decreased due to the exposure to the cold night.</p>
@@ -78,6 +80,9 @@ if(isset($_POST['action'])) {
                 </div>
                 
             <?php elseif ($_SESSION['choice_made'] == 'explore_nearby'): ?>
+                <audio autoplay loop>
+                    <source src="audio/stranded-intro.mp3" type="audio/mp3">
+                </audio>
                 <div class="consequence-box positive">
                     <h3>You explored and found shelter</h3>
                     <p>You explored the surroundings and found a cave to shelter in. The night was much warmer, and you managed to rest well, keeping your health intact.</p>

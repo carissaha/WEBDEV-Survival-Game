@@ -134,6 +134,10 @@ if(isset($_POST['action'])) {
       <h1>Survival Challenge: Day 3</h1>
       
       <?php if($_SESSION['part5_stage'] == 'day3_start'): ?>
+            <audio autoplay loop>
+                    <source src="audio/birds.mp3" type="audio/mp3">
+            </audio>
+
           <h2>A New Dawn of Hope</h2>
           <p>Sunlight pours through the wooden wall cracks as you awake inside the cabin. The restful sleep you had last night left you feeling both refreshed and determined. Today could be the day of rescue.</p>
           
@@ -149,6 +153,9 @@ if(isset($_POST['action'])) {
           </form>
           
       <?php elseif($_SESSION['part5_stage'] == 'forest_journey'): ?>
+            <audio autoplay loop>
+                    <source src="audio/trees.mp3" type="audio/mp3">
+            </audio>
           <h2>Through the Wilderness</h2>
           <p>Following the map from the handbook, you make steady progress through the dense forest. The terrain becomes increasingly steep as you navigate toward the hilltop ranger station.</p>
           
@@ -163,6 +170,9 @@ if(isset($_POST['action'])) {
           </form>
           
       <?php elseif($_SESSION['part5_stage'] == 'bear_encounter'): ?>
+            <audio autoplay loop>
+                <source src="audio/stranded-intro.mp3" type="audio/mp3">
+            </audio>
           <h2>Unexpected Danger</h2>
           <p>You stop dead in your tracks when you turn a corner along the trail. A large black bear is investigating a fallen log just thirty feet away. The wind is blowing toward you, but the bear remains unaware—for now.</p>
           
@@ -189,6 +199,9 @@ if(isset($_POST['action'])) {
                   <img src="images/bearpass.gif" class="scene-img">
               </div>
           <?php elseif($_SESSION['choice_made'] == 'stay_still_failure'): ?>
+            <audio autoplay loop>
+                <source src="audio/stranded-intro.mp3" type="audio/mp3">
+            </audio>
               <div class="consequence-box negative">
                   <h3>The bear noticed you</h3>
                   <p>Your stillness wasn't enough. The bear catches your scent and charges. The co-pilot rushes in with a branch to distract it, but you sustain injuries during the frantic encounter.</p>
@@ -215,6 +228,9 @@ if(isset($_POST['action'])) {
           </form>
           
       <?php elseif($_SESSION['part5_stage'] == 'bear_injury'): ?>
+        <audio autoplay loop>
+            <source src="audio/stranded-intro.mp3" type="audio/mp3">
+        </audio>
           <h2>Tending to Injuries</h2>
           <p>The bear attack leaves you battered and bleeding. Your vision blurs as you try to gather strength.</p>
           
@@ -230,6 +246,9 @@ if(isset($_POST['action'])) {
           </form>
           
       <?php elseif($_SESSION['part5_stage'] == 'mysterious_box'): ?>
+        <audio autoplay loop>
+                <source src="audio/background.mp3" type="audio/mp3">
+        </audio>
           <h2>A Strange Discovery</h2>
           <p>After surviving the bear encounter, you continue along the trail. Deep in the forest, you come upon an old, weathered wooden box hidden among tree roots.</p>
           
@@ -245,6 +264,9 @@ if(isset($_POST['action'])) {
           <h2>The Box's Secret</h2>
           
           <?php if($_SESSION['choice_made'] == 'opened_box'): ?>
+            <audio autoplay loop>
+                <source src="audio/stranded-intro.mp3" type="audio/mp3">
+            </audio>
               <div class="consequence-box negative">
                   <h3>A Painful Surprise</h3>
                   <p>Your curiosity gets the better of you. As you slowly open the box, a cloud of ancient dust and spores bursts forth, catching you off guard.</p>

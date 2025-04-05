@@ -178,7 +178,7 @@ if(isset($_POST['action'])) {
         <?php elseif($_SESSION['part4_stage'] == 'water_choice'): ?>
             <audio autoplay loop>
                 <source src="audio/water.mp3" type="audio/mp3">
-                        
+                    
             </audio>
 
             <h2>Finding Water</h2>
@@ -193,13 +193,13 @@ if(isset($_POST['action'])) {
             </form>
             
         <?php elseif($_SESSION['part4_stage'] == 'water_consequence'): ?>
-            <audio autoplay loop>
-                <source src="audio/background.mp3" type="audio/mp3">
-                        
-            </audio>
+
             <h2>Water Decision</h2>
             
             <?php if($_SESSION['choice_made'] == 'drink_stream'): ?>
+                <audio autoplay loop>
+                    <source src="audio/stranded-intro.mp3" type="audio/mp3">
+                </audio>
                 <div class="consequence-box negative">
                     <h3>You drank directly from the stream</h3>
                     <p>The cold water is great and stops your thirst. You feel new and strong. But soon your stomach cramps a lot - the water held bad germs or bugs. Your body cannot beat these. You are less strong - your body fights the problem.</p>
@@ -207,6 +207,9 @@ if(isset($_POST['action'])) {
                     <p><strong>Health decreased by 20%</strong></p>
                 </div>
             <?php else: ?>
+                <audio autoplay loop>
+                    <source src="audio/background.mp3" type="audio/mp3">
+                </audio>
                 <div class="consequence-box positive">
                     <h3>You purified the water first</h3>
                     <p>You collect wood and utilize the survival kit - the aim is to create a small fire. After a water boil for a few minutes, you let the liquid cool prior to drinking. The added work benefits you - the water is now safe, also cool, in addition to your body gets hydration well, resulting in greater energy.</p>

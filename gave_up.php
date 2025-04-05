@@ -7,6 +7,10 @@
     <link rel="stylesheet" href="part6.css">
 </head>
 <body>
+    <audio autoplay loop>
+        <source src="audio/stranded-intro.mp3" type="audio/mp3">
+    </audio>
+
     <div class="container ending">
         <img id="skelton" src="images/skeleton.gif" alt="game over">
         <h2>Time Ran Out</h2>
